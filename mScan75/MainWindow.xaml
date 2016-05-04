@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:mScan75"
         mc:Ignorable="d"
         Title="mScan75" Height="350" Width="525">
+
     <Grid>
-        <Label x:Name="label" Content="Volume :" HorizontalAlignment="Left" Height="25" Margin="30,29,0,0" VerticalAlignment="Top" Width="79"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="25" Margin="109,29,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="53"/>
+        <Label x:Name="label" Content="Port :" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="79" Margin="0,10,0,0"/>
+        <ComboBox x:Name="portselec" HorizontalAlignment="Left" Height="25" Margin="39,10,0,0" VerticalAlignment="Top" Width="65" SelectionChanged="changerPort"/>
 
     </Grid>
 </Window>

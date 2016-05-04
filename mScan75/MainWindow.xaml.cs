@@ -21,16 +21,23 @@ namespace mScan75
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SerialPort port;
         public MainWindow()
         {
             InitializeComponent();
-            SerialPort port = new SerialPort("com3", 57600, (Parity)Enum.Parse(typeof(Parity), "0", true), 8, (StopBits)Enum.Parse(typeof(StopBits), "1", true));
-            port.Open();
+            this.port = new SerialPort("com0", 57600, (Parity)Enum.Parse(typeof(Parity), "0", true), 8, (StopBits)Enum.Parse(typeof(StopBits), "1", true));
             port.NewLine = "\r";
-            port.WriteLine("VOL");
-            String volume = port.ReadLine();
-            textBox.Text = volume;
-            port.Close();
+            List<string> ports = new List<string>();
+            foreach (string s in SerialPort.GetPortNames())
+            {
+                ports.Add(s);
+            }
+            portselec.ItemsSource =ports;
+        }
+
+        private void changerPort(object sender, SelectionChangedEventArgs e)
+        {
+            this.port.PortName = ((String)portselec.SelectedValue).ToLower();
         }
     }
 }
