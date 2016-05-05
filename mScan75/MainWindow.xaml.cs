@@ -44,12 +44,15 @@ namespace mScan75
                 lireVolume();
                 lireSquelch();
                 lirePriorite();
+                lireCloseCall();
                 controles.IsEnabled = true;
                 gpriorite.IsEnabled = true;
+                gclosecall.IsEnabled = true;
             } else
             {
                 controles.IsEnabled = false;
                 gpriorite.IsEnabled = false;
+                gclosecall.IsEnabled = false;
             }
         }
         private Boolean ouvrirPort()
@@ -131,10 +134,104 @@ namespace mScan75
                 prioff.IsChecked = true;
             else if (pri[1].Equals("1"))
                 prion.IsChecked = true;
-            else if (pri[1].Equals("2"))
-                prionplus.IsChecked = true;
             else if (pri[1].Equals("3"))
                 pridnd.IsChecked = true;
+        }
+
+        private void changerPrioriteOff(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("PRI,0");
+            String[] pri = port.ReadLine().Split(',');
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerPrioriteOn(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("PRI,1");
+            String[] pri = port.ReadLine().Split(',');
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerPrioriteDND(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("PRI,3");
+            String[] pri = port.ReadLine().Split(',');
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void lireCloseCall()
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+            if (clc[1].Equals("0"))
+                ccoff.IsChecked = true;
+            else if (clc[1].Equals("1"))
+                ccon.IsChecked = true;
+            else if (clc[1].Equals("2"))
+                ccdnd.IsChecked = true;
+        }
+
+        private void ChangerCloseCallOff(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            port.WriteLine("CLC,0," + clc[2] + "," + clc[3] + "," + clc[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void ChangerCloseCallOn(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            port.WriteLine("CLC,1," + clc[2] + "," + clc[3] + "," + clc[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void ChangerCloseCallDND(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            port.WriteLine("CLC,2," + clc[2] + "," + clc[3] + "," + clc[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
         }
     }
 }
