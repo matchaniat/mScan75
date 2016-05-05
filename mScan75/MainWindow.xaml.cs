@@ -190,6 +190,31 @@ namespace mScan75
                 ccon.IsChecked = true;
             else if (clc[1].Equals("2"))
                 ccdnd.IsChecked = true;
+            if (clc[2].Equals("0"))
+                checkBoxalbip.IsChecked = false;
+            else
+                checkBoxalbip.IsChecked = true;
+            if (clc[3].Equals("0"))
+                checkBoxallum.IsChecked = false;
+            else
+                checkBoxallum.IsChecked = true;
+            char[] bandes = clc[4].ToCharArray();
+            if (bandes[0].Equals('0'))
+                ccvhfb.IsChecked = false;
+            else
+                ccvhfb.IsChecked = true;
+            if (bandes[1].Equals('0'))
+                ccair.IsChecked = false;
+            else
+                ccair.IsChecked = true;
+            if (bandes[2].Equals('0'))
+                ccvhfh.IsChecked = false;
+            else
+                ccvhfh.IsChecked = true;
+            if (bandes[4].Equals('0'))
+                ccuhf.IsChecked = false;
+            else
+                ccuhf.IsChecked = true;
         }
 
         private void ChangerCloseCallOff(object sender, RoutedEventArgs e)
@@ -228,6 +253,142 @@ namespace mScan75
             port.WriteLine("CLC");
             String[] clc = port.ReadLine().Split(',');
             port.WriteLine("CLC,2," + clc[2] + "," + clc[3] + "," + clc[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerCloseCallBipOn(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            port.WriteLine("CLC,"+clc[1]+",1," + clc[3] + "," + clc[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerCloseCallBipOff(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            port.WriteLine("CLC," + clc[1] + ",0," + clc[3] + "," + clc[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerCloseCallLumOn(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            port.WriteLine("CLC," + clc[1] + ","+clc[2]+",1," + clc[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerCloseCallLumOff(object sender, RoutedEventArgs e)
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            port.WriteLine("CLC," + clc[1] + "," + clc[2] + ",0," + clc[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerCloseCallVHFB(object sender, RoutedEventArgs e)
+        {
+            char et;
+            if (ccvhfb.IsChecked == true)
+                et = '1';
+            else
+                et = '0';
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            char[] bandes = clc[4].ToCharArray();
+            port.WriteLine("CLC," + clc[1] + "," + clc[2] + "," + clc[3] + "," + et + bandes[1]+bandes[2]+bandes[3]+bandes[4]+",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerCloseCallAIR(object sender, RoutedEventArgs e)
+        {
+            char et;
+            if (ccair.IsChecked == true)
+                et = '1';
+            else
+                et = '0';
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            char[] bandes = clc[4].ToCharArray();
+            port.WriteLine("CLC," + clc[1] + "," + clc[2] + "," + clc[3] + "," + bandes[0] + et + bandes[2] + bandes[3] + bandes[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerCloseCallVHFH(object sender, RoutedEventArgs e)
+        {
+            char et;
+            if (ccvhfh.IsChecked == true)
+                et = '1';
+            else
+                et = '0';
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            char[] bandes = clc[4].ToCharArray();
+            port.WriteLine("CLC," + clc[1] + "," + clc[2] + "," + clc[3] + "," + bandes[0] + bandes[1] + et + bandes[3] + bandes[4] + ",");
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerCloseCallUHF(object sender, RoutedEventArgs e)
+        {
+            char et;
+            if (ccuhf.IsChecked == true)
+                et = '1';
+            else
+                et = '0';
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CLC");
+            String[] clc = port.ReadLine().Split(',');
+            char[] bandes = clc[4].ToCharArray();
+            port.WriteLine("CLC," + clc[1] + "," + clc[2] + "," + clc[3] + "," + bandes[0] + bandes[1] + bandes[2] + bandes[3] + et + ",");
             port.ReadLine();
             port.WriteLine("EPG");
             port.ReadLine();

@@ -28,13 +28,19 @@
                 <RadioButton x:Name="pridnd" Content="DND" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Checked="changerPrioriteDND"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="gclosecall" Header="Close Call" HorizontalAlignment="Left" Margin="372,52,0,0" VerticalAlignment="Top" Height="95" Width="232" IsEnabled="False">
+        <GroupBox x:Name="gclosecall" Header="Close Call" HorizontalAlignment="Left" Margin="372,52,0,0" VerticalAlignment="Top" Height="148" Width="232" IsEnabled="False">
             <Grid>
                 <RadioButton x:Name="ccoff" Content="Off" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="ChangerCloseCallOff"/>
                 <RadioButton x:Name="ccon" Content="Prioritaire" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Checked="ChangerCloseCallOn"/>
                 <RadioButton x:Name="ccdnd" Content="DND" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Checked="ChangerCloseCallDND"/>
-                <CheckBox x:Name="checkBoxalbip" Content="Alerte Bip" HorizontalAlignment="Left" Margin="128,10,0,0" VerticalAlignment="Top"/>
-                <CheckBox x:Name="checkBoxallum" Content="Alerte Lum." HorizontalAlignment="Left" Margin="128,33,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="checkBoxalbip" Content="Alerte Bip" HorizontalAlignment="Left" Margin="128,10,0,0" VerticalAlignment="Top" Checked="changerCloseCallBipOn" Unchecked="changerCloseCallBipOff"/>
+                <CheckBox x:Name="checkBoxallum" Content="Alerte Lum." HorizontalAlignment="Left" Margin="128,33,0,0" VerticalAlignment="Top" Checked="changerCloseCallLumOn" Unchecked="changerCloseCallLumOff" />
+                <Rectangle Fill="#FFDCDCDC" HorizontalAlignment="Left" Height="1" Margin="10,70,0,0" Stroke="#FFDCDCDC" VerticalAlignment="Top" Width="190"/>
+                <CheckBox x:Name="ccvhfb" Content="VHF B." HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Click="changerCloseCallVHFB"/>
+                <CheckBox x:Name="ccair" Content="AIR" HorizontalAlignment="Left" Margin="128,80,0,0" VerticalAlignment="Top" Click="changerCloseCallAIR"/>
+                <CheckBox x:Name="ccvhfh" Content="VHF H." HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Click="changerCloseCallVHFH"/>
+                <CheckBox x:Name="ccuhf" Content="UHF" HorizontalAlignment="Left" Margin="128,100,0,0" VerticalAlignment="Top" Click="changerCloseCallUHF"/>
+
             </Grid>
         </GroupBox>
     </Grid>
