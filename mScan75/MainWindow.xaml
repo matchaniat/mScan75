@@ -5,11 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mScan75"
         mc:Ignorable="d"
-        Title="mScan75" Height="350" Width="525">
+        Title="mScan75" Height="500" Width="700">
 
     <Grid>
-        <Label x:Name="label" Content="Port :" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="79" Margin="0,10,0,0"/>
+        <Label Content="Port :" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="79" Margin="0,10,0,0"/>
         <ComboBox x:Name="portselec" HorizontalAlignment="Left" Height="25" Margin="39,10,0,0" VerticalAlignment="Top" Width="65" SelectionChanged="changerPort"/>
+        <Label x:Name="etat" Content="X" HorizontalAlignment="Left" Margin="109,9,0,0" VerticalAlignment="Top"/>
+        <GroupBox x:Name="controles" Header="Controles" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Height="148" Width="232" IsEnabled="False">
+            <Grid>
+                <Slider x:Name="slidervol" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="160" LargeChange="0" Maximum="15" IsSnapToTickEnabled="True" ValueChanged="changerVolume"/>
+                <Slider x:Name="slidersqu" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="160" LargeChange="0" Maximum="15" IsSnapToTickEnabled="True" ValueChanged="changerSquelch" />
+                <Label x:Name="labelvol" Content="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="184,33,0,0"/>
+                <Label x:Name="labelsqu" Content="0" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="184,88,0,0"/>
+                <Label Content="Volume" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
+                <Label Content="Squelch" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="gpriorite" Header="Mode Priorité" HorizontalAlignment="Left" Margin="247,52,0,0" VerticalAlignment="Top" Height="148" Width="120" IsEnabled="False">
+            <Grid>
+                <RadioButton x:Name="prioff" Content="Off" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="prion" Content="On" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="prionplus" Content="On Plus" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="pridnd" Content="DND" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
 
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>
