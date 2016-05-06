@@ -191,13 +191,13 @@ namespace mScan75
             else if (clc[1].Equals("2"))
                 ccdnd.IsChecked = true;
             if (clc[2].Equals("0"))
-                checkBoxalbip.IsChecked = false;
+                ccbip.IsChecked = false;
             else
-                checkBoxalbip.IsChecked = true;
+                ccbip.IsChecked = true;
             if (clc[3].Equals("0"))
-                checkBoxallum.IsChecked = false;
+                cclum.IsChecked = false;
             else
-                checkBoxallum.IsChecked = true;
+                cclum.IsChecked = true;
             char[] bandes = clc[4].ToCharArray();
             if (bandes[0].Equals('0'))
                 ccvhfb.IsChecked = false;
@@ -259,56 +259,38 @@ namespace mScan75
             port.Close();
         }
 
-        private void changerCloseCallBipOn(object sender, RoutedEventArgs e)
+        private void changerCloseCallBip(object sender, RoutedEventArgs e)
         {
+            char et;
+            if (ccbip.IsChecked == true)
+                et = '1';
+            else
+                et='0';
             port.Open();
             port.WriteLine("PRG");
             port.ReadLine();
             port.WriteLine("CLC");
             String[] clc = port.ReadLine().Split(',');
-            port.WriteLine("CLC,"+clc[1]+",1," + clc[3] + "," + clc[4] + ",");
+            port.WriteLine("CLC," + clc[1] + ","+et+"," + clc[3] + "," + clc[4] + ",");
             port.ReadLine();
             port.WriteLine("EPG");
             port.ReadLine();
             port.Close();
         }
 
-        private void changerCloseCallBipOff(object sender, RoutedEventArgs e)
+        private void changerCloseCallLum(object sender, RoutedEventArgs e)
         {
+            char et;
+            if (cclum.IsChecked == true)
+                et = '1';
+            else
+                et = '0';
             port.Open();
             port.WriteLine("PRG");
             port.ReadLine();
             port.WriteLine("CLC");
             String[] clc = port.ReadLine().Split(',');
-            port.WriteLine("CLC," + clc[1] + ",0," + clc[3] + "," + clc[4] + ",");
-            port.ReadLine();
-            port.WriteLine("EPG");
-            port.ReadLine();
-            port.Close();
-        }
-
-        private void changerCloseCallLumOn(object sender, RoutedEventArgs e)
-        {
-            port.Open();
-            port.WriteLine("PRG");
-            port.ReadLine();
-            port.WriteLine("CLC");
-            String[] clc = port.ReadLine().Split(',');
-            port.WriteLine("CLC," + clc[1] + ","+clc[2]+",1," + clc[4] + ",");
-            port.ReadLine();
-            port.WriteLine("EPG");
-            port.ReadLine();
-            port.Close();
-        }
-
-        private void changerCloseCallLumOff(object sender, RoutedEventArgs e)
-        {
-            port.Open();
-            port.WriteLine("PRG");
-            port.ReadLine();
-            port.WriteLine("CLC");
-            String[] clc = port.ReadLine().Split(',');
-            port.WriteLine("CLC," + clc[1] + "," + clc[2] + ",0," + clc[4] + ",");
+            port.WriteLine("CLC," + clc[1] + "," + clc[2] + ","+et+"," + clc[4] + ",");
             port.ReadLine();
             port.WriteLine("EPG");
             port.ReadLine();
@@ -394,5 +376,7 @@ namespace mScan75
             port.ReadLine();
             port.Close();
         }
+
+
     }
 }

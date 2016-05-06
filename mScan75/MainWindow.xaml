@@ -33,8 +33,8 @@
                 <RadioButton x:Name="ccoff" Content="Off" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="ChangerCloseCallOff"/>
                 <RadioButton x:Name="ccon" Content="Prioritaire" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Checked="ChangerCloseCallOn"/>
                 <RadioButton x:Name="ccdnd" Content="DND" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Checked="ChangerCloseCallDND"/>
-                <CheckBox x:Name="checkBoxalbip" Content="Alerte Bip" HorizontalAlignment="Left" Margin="128,10,0,0" VerticalAlignment="Top" Checked="changerCloseCallBipOn" Unchecked="changerCloseCallBipOff"/>
-                <CheckBox x:Name="checkBoxallum" Content="Alerte Lum." HorizontalAlignment="Left" Margin="128,33,0,0" VerticalAlignment="Top" Checked="changerCloseCallLumOn" Unchecked="changerCloseCallLumOff" />
+                <CheckBox x:Name="ccbip" Content="Alerte Bip" HorizontalAlignment="Left" Margin="128,10,0,0" VerticalAlignment="Top" Click="changerCloseCallBip"/>
+                <CheckBox x:Name="cclum" Content="Alerte Lum." HorizontalAlignment="Left" Margin="128,33,0,0" VerticalAlignment="Top" Click="changerCloseCallLum" />
                 <Rectangle Fill="#FFDCDCDC" HorizontalAlignment="Left" Height="1" Margin="10,70,0,0" Stroke="#FFDCDCDC" VerticalAlignment="Top" Width="190"/>
                 <CheckBox x:Name="ccvhfb" Content="VHF B." HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Click="changerCloseCallVHFB"/>
                 <CheckBox x:Name="ccair" Content="AIR" HorizontalAlignment="Left" Margin="128,80,0,0" VerticalAlignment="Top" Click="changerCloseCallAIR"/>
