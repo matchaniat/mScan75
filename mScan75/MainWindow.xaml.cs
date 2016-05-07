@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO.Ports;
 using System.Threading;
+using System.Diagnostics;
 
 namespace mScan75
 {
@@ -52,12 +53,14 @@ namespace mScan75
                 gpriorite.IsEnabled = true;
                 gclosecall.IsEnabled = true;
                 gverr.IsEnabled = true;
+                gbanques.IsEnabled = true;
             } else
             {
                 controles.IsEnabled = false;
                 gpriorite.IsEnabled = false;
                 gclosecall.IsEnabled = false;
                 gverr.IsEnabled = false;
+                gbanques.IsEnabled = false;
             }
         }
         private Boolean ouvrirPort()
@@ -452,6 +455,49 @@ namespace mScan75
                 else
                     cb[i].IsChecked = true;
             }
+        }
+
+        private void changerBanqueScan(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            int b = Int32.Parse(cb.Content.ToString());
+            char et = '1';
+            if (cb.IsChecked == true)
+                et = '0';
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("SCG");
+            String[] bs = port.ReadLine().Split(',');
+            char[] bscan = bs[1].ToCharArray();
+            bscan[b - 1] = et;
+            port.WriteLine("SCG," + new String(bscan));
+            Debug.WriteLine("SCG," + new String(bscan));
+            Debug.WriteLine(port.ReadLine());
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
+
+        private void changerBanqueRecherche(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            int b = Int32.Parse(cb.Content.ToString());
+            char et = '1';
+            if (cb.IsChecked == true)
+                et = '0';
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CSG");
+            String[] br = port.ReadLine().Split(',');
+            char[] brech = br[1].ToCharArray();
+            brech[b - 1] = et;
+            port.WriteLine("CSG," + new String(brech) + "," + br[2] + "," + br[3]);
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
         }
     }
 }
