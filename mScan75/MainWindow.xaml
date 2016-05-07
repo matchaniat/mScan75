@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mScan75"
         mc:Ignorable="d"
-        Title="mScan75" Height="500" Width="700">
+        Title="mScan75" Height="530" Width="700">
 
     <Grid>
         <Label Content="Port :" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="79" Margin="0,10,0,0"/>
@@ -46,6 +46,38 @@
         <GroupBox x:Name="gverr" Header="Verrouillage" HorizontalAlignment="Left" Margin="484,152,0,0" VerticalAlignment="Top" Width="120" Height="48" IsEnabled="False">
             <Grid Margin="-10,0,10,0">
                 <CheckBox x:Name="verrt" Content="Verr. touches" HorizontalAlignment="Left" Margin="17,5,0,0" VerticalAlignment="Top" Click="changerVerrouillage"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="gbanques" Header="Paramètres Banques Scan/Recherche" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Height="278" Width="349" IsEnabled="False">
+            <Grid>
+                <GroupBox x:Name="gscan" Header="Scan" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="236" Width="156">
+                    <Grid>
+                        <CheckBox x:Name="scan1" Content="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="scan2" Content="2" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="scan3" Content="3" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="scan4" Content="4" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="scan5" Content="5" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="scan6" Content="6" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="scan7" Content="7" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="scan8" Content="8" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="scan9" Content="9" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="scan10" Content="10" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox x:Name="grecherche" Header="Recherche" HorizontalAlignment="Left" Margin="171,10,0,0" VerticalAlignment="Top" Height="236" Width="156">
+                    <Grid>
+                        <CheckBox x:Name="rech1" Content="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="rech2" Content="2" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="rech3" Content="3" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="rech4" Content="4" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="rech5" Content="5" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="rech6" Content="6" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="rech7" Content="7" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="rech8" Content="8" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="rech9" Content="9" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="rech10" Content="10" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top"/>
+                    </Grid>
+                </GroupBox>
             </Grid>
         </GroupBox>
 
