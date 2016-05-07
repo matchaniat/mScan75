@@ -21,14 +21,7 @@
                 <Label Content="Squelch" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="gpriorite" Header="Mode Priorité" HorizontalAlignment="Left" Margin="247,52,0,0" VerticalAlignment="Top" Height="95" Width="120" IsEnabled="False">
-            <Grid>
-                <RadioButton x:Name="prioff" Content="Off" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="changerPrioriteOff"/>
-                <RadioButton x:Name="prion" Content="On" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Checked="changerPrioriteOn"/>
-                <RadioButton x:Name="pridnd" Content="DND" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Checked="changerPrioriteDND"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox x:Name="gclosecall" Header="Close Call" HorizontalAlignment="Left" Margin="372,52,0,0" VerticalAlignment="Top" Height="148" Width="232" IsEnabled="False">
+        <GroupBox x:Name="gclosecall" Header="Close Call" HorizontalAlignment="Left" Margin="247,52,0,0" VerticalAlignment="Top" Height="148" Width="232" IsEnabled="False">
             <Grid>
                 <RadioButton x:Name="ccoff" Content="Off" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="ChangerCloseCallOff"/>
                 <RadioButton x:Name="ccon" Content="Prioritaire" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Checked="ChangerCloseCallOn"/>
@@ -43,5 +36,18 @@
 
             </Grid>
         </GroupBox>
+        <GroupBox x:Name="gpriorite" Header="Mode Priorité" HorizontalAlignment="Left" Margin="484,52,0,0" VerticalAlignment="Top" Height="95" Width="120" IsEnabled="False">
+            <Grid>
+                <RadioButton x:Name="prioff" Content="Off" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="changerPrioriteOff"/>
+                <RadioButton x:Name="prion" Content="On" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Checked="changerPrioriteOn"/>
+                <RadioButton x:Name="pridnd" Content="DND" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Checked="changerPrioriteDND"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="gverr" Header="Verrouillage" HorizontalAlignment="Left" Margin="484,152,0,0" VerticalAlignment="Top" Width="120" Height="48" IsEnabled="False">
+            <Grid Margin="-10,0,10,0">
+                <CheckBox x:Name="verrt" Content="Verr. touches" HorizontalAlignment="Left" Margin="17,5,0,0" VerticalAlignment="Top" Click="changerVerrouillage"/>
+            </Grid>
+        </GroupBox>
+
     </Grid>
 </Window>

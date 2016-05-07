@@ -45,14 +45,17 @@ namespace mScan75
                 lireSquelch();
                 lirePriorite();
                 lireCloseCall();
+                lireVerrouillage();
                 controles.IsEnabled = true;
                 gpriorite.IsEnabled = true;
                 gclosecall.IsEnabled = true;
+                gverr.IsEnabled = true;
             } else
             {
                 controles.IsEnabled = false;
                 gpriorite.IsEnabled = false;
                 gclosecall.IsEnabled = false;
+                gverr.IsEnabled = false;
             }
         }
         private Boolean ouvrirPort()
@@ -377,6 +380,36 @@ namespace mScan75
             port.Close();
         }
 
+        private void lireVerrouillage()
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("KBP");
+            String[] verr = port.ReadLine().Split(',');
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+            if (verr[2].Equals("0"))
+                verrt.IsChecked = false;
+            else
+                verrt.IsChecked = true;
+            
+        }
 
+        private void changerVerrouillage(object sender, RoutedEventArgs e)
+        {
+            char et = '0';
+            if (verrt.IsChecked == true)
+                et = '1';
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("KBP,,"+et);
+            port.ReadLine();
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+        }
     }
 }
