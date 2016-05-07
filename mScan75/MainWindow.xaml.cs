@@ -46,6 +46,8 @@ namespace mScan75
                 lirePriorite();
                 lireCloseCall();
                 lireVerrouillage();
+                lireBanqueScan();
+                lireBanqueRecherche();
                 controles.IsEnabled = true;
                 gpriorite.IsEnabled = true;
                 gclosecall.IsEnabled = true;
@@ -410,6 +412,46 @@ namespace mScan75
             port.WriteLine("EPG");
             port.ReadLine();
             port.Close();
+        }
+        private void lireBanqueScan()
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("SCG");
+            String[] bs = port.ReadLine().Split(',');
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+            char[] bscan = bs[1].ToCharArray();
+            CheckBox[] cb = { scan1, scan2,scan3,scan4,scan5,scan6,scan7,scan8,scan9,scan10 };
+            for(int i=0;i<10;i++)
+            {
+                if (bscan[i] == '1')
+                    cb[i].IsChecked = false;
+                else
+                    cb[i].IsChecked = true;
+            }
+        }
+        private void lireBanqueRecherche()
+        {
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            port.WriteLine("CSG");
+            String[] br = port.ReadLine().Split(',');
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+            char[] brech = br[1].ToCharArray();
+            CheckBox[] cb = { rech1,rech2,rech3,rech4,rech5,rech6,rech7,rech8,rech9,rech10 };
+            for (int i = 0; i < 10; i++)
+            {
+                if (brech[i] == '1')
+                    cb[i].IsChecked = false;
+                else
+                    cb[i].IsChecked = true;
+            }
         }
     }
 }
