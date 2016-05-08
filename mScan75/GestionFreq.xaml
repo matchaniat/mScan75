@@ -9,7 +9,7 @@
     <Grid>
         <DataGrid x:Name="grille" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="449" Width="576" AutoGenerateColumns="False" ItemsSource="{Binding test}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Numéro" Binding="{Binding Num}"/>
+                <DataGridTextColumn Header="Numéro" Binding="{Binding Num}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Fréquence" Binding="{Binding Freq}"/>
                 <DataGridTextColumn Header="Modulation" Binding="{Binding Modul}"/>
                 <DataGridCheckBoxColumn Header="Délai" Binding="{Binding Delai}"/>
