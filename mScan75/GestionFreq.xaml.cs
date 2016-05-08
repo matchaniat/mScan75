@@ -30,22 +30,63 @@ namespace mScan75
             this.port = portv;
             this.DataContext = this;
             test = new ObservableCollection<Memoire>();
-            lireFrequences();
+            lireFrequences(1,30);
         }
-        public void lireFrequences(){
+        public void lireFrequences(int debut,int fin){
+            test.Clear();
             port.Open();
             port.WriteLine("PRG");
             port.ReadLine();
-            for (int i=1;i<=30;i++)
+            for (int i=debut;i<=fin;i++)
             {
                 port.WriteLine("CIN," + i.ToString());
                 String[] donn = port.ReadLine().Split(',');
-                test.Add(new Memoire(donn[1], ((Double.Parse(donn[3])/10000.0).ToString()), donn[4],true, false, false));
+                bool d,lo,pr;
+                if (donn[6].Equals("1"))
+                    d = true;
+                else
+                    d = false;
+                if (donn[7].Equals("1"))
+                    lo = true;
+                else
+                    lo = false;
+                if (donn[8].Equals("1"))
+                    pr = true;
+                else
+                    pr = false;
+                test.Add(new Memoire(donn[1], ((Double.Parse(donn[3])/10000.0).ToString()), donn[4],d, lo, pr));
             }
             port.WriteLine("EPG");
             port.ReadLine();
             port.Close();
-        }   
+        }
+
+        private void changerBanque(object sender, RoutedEventArgs e)
+        {
+            char t2='1';
+            char t= (((Button)sender).Content.ToString())[7];
+            try { t2 = (((Button)sender).Content.ToString())[8]; } catch (Exception ex) { };
+            if (t.Equals('1') && t2.Equals('1'))
+                lireFrequences(1, 30);
+            else if (t.Equals('2'))
+                lireFrequences(31, 60);
+            else if (t.Equals('3'))
+                lireFrequences(61, 90);
+            else if (t.Equals('4'))
+                lireFrequences(91, 120);
+            else if (t.Equals('5'))
+                lireFrequences(121, 150);
+            else if (t.Equals('6'))
+                lireFrequences(151, 180);
+            else if (t.Equals('7'))
+                lireFrequences(181, 210);
+            else if (t.Equals('8'))
+                lireFrequences(211, 240);
+            else if (t.Equals('9'))
+                lireFrequences(241, 270);
+            else if (t.Equals('1') && t2.Equals('0')) 
+                lireFrequences(271, 300);
+        }
     }
     public class Memoire
     {

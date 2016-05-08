@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mScan75"
         mc:Ignorable="d"
-        Title="GestionFreq" Height="500" Width="700">
+        Title="GestionFreq" Height="650" Width="700">
     <Grid>
-        <DataGrid x:Name="grille" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="449" Width="576" AutoGenerateColumns="False" ItemsSource="{Binding test}">
+        <DataGrid x:Name="grille" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="599" Width="576" AutoGenerateColumns="False" ItemsSource="{Binding test}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numéro" Binding="{Binding Num}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Fréquence" Binding="{Binding Freq}"/>
@@ -17,5 +17,15 @@
                 <DataGridCheckBoxColumn Header="Prioritaire" Binding="{Binding Pri}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="ba1" Content="Banque 1" HorizontalAlignment="Left" Margin="591,10,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
+        <Button x:Name="ba2" Content="Banque 2" HorizontalAlignment="Left" Margin="591,35,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
+        <Button x:Name="ba3" Content="Banque 3" HorizontalAlignment="Left" Margin="591,60,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
+        <Button x:Name="ba4" Content="Banque 4" HorizontalAlignment="Left" Margin="591,85,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
+        <Button x:Name="ba5" Content="Banque 5" HorizontalAlignment="Left" Margin="591,110,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
+        <Button x:Name="ba6" Content="Banque 6" HorizontalAlignment="Left" Margin="591,135,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
+        <Button x:Name="ba7" Content="Banque 7" HorizontalAlignment="Left" Margin="591,160,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
+        <Button x:Name="ba8" Content="Banque 8" HorizontalAlignment="Left" Margin="591,185,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
+        <Button x:Name="ba9" Content="Banque 9" HorizontalAlignment="Left" Margin="591,210,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
+        <Button x:Name="ba10" Content="Banque 10" HorizontalAlignment="Left" Margin="591,235,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
     </Grid>
 </Window>
