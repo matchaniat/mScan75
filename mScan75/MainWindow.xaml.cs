@@ -505,5 +505,11 @@ namespace mScan75
             Window nw = new GestionFreq(this.port);
             nw.Show();
         }
+
+        private void gererBandes(object sender, RoutedEventArgs e)
+        {
+            Window nw = new GestionBandes(this.port);
+            nw.Show();
+        }
     }
 }

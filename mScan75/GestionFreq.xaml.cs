@@ -87,6 +87,47 @@ namespace mScan75
             else if (t.Equals('1') && t2.Equals('0')) 
                 lireFrequences(271, 300);
         }
+
+        private void envoyerFrequences(object sender, RoutedEventArgs e)
+        {
+            foreach(Memoire ligne in test)
+            {
+                if(!(ligne.Freq.Equals("0")))
+                {
+                    string freq = ((Double.Parse(ligne.Freq)) * 10000.0).ToString();
+                    char delai, lo, pri;
+                    if (ligne.Delai)
+                        delai = '1';
+                    else
+                        delai = '0';
+                    if (ligne.Exclu)
+                        lo = '1';
+                    else
+                        lo = '0';
+                    if (ligne.Pri)
+                        pri = '1';
+                    else
+                        pri = '0';
+                    port.Open();
+                    port.WriteLine("PRG");
+                    port.ReadLine();
+                    port.WriteLine("CIN," + ligne.Num + ",," + freq + "," + ligne.Modul + ",," + delai + "," + lo + "," + pri);
+                    if(port.ReadLine().Contains("ERR"))
+                    {
+                        MessageBox.Show("Erreur","Erreur",MessageBoxButton.OK,MessageBoxImage.Error);
+                        port.WriteLine("EPG");
+                        port.ReadLine();
+                        port.Close();
+                        return;
+                    }
+                    port.WriteLine("EPG");
+                    port.ReadLine();
+                    port.Close();
+                }
+            }
+            MessageBox.Show("Données envoyées", "Envoyé", MessageBoxButton.OK, MessageBoxImage.Information);
+            lireFrequences(Int32.Parse(test.First().Num),Int32.Parse(test.Last().Num));
+        }
     }
     public class Memoire
     {
