@@ -499,5 +499,11 @@ namespace mScan75
             port.ReadLine();
             port.Close();
         }
+
+        private void gererFrequences(object sender, RoutedEventArgs e)
+        {
+            Window nw = new GestionFreq(this.port);
+            nw.Show();
+        }
     }
 }
