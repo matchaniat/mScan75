@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mScan75"
         mc:Ignorable="d"
-        Title="mScan75" Height="530" Width="700">
+        Title="mScan75" Height="530" Width="700" ResizeMode="CanMinimize">
 
     <Grid>
         <Label Content="Port :" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="79" Margin="0,10,0,0"/>

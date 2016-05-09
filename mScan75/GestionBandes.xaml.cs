@@ -50,7 +50,24 @@ namespace mScan75
 
         private void envoyerBandes(object sender, RoutedEventArgs e)
         {
-
+            port.Open();
+            port.WriteLine("PRG");
+            port.ReadLine();
+            foreach (Bande ligne in data)
+            {
+                string d = ((Double.Parse(ligne.Debut)) * 10000.0).ToString();
+                string f = ((Double.Parse(ligne.Fin)) * 10000.0).ToString();
+                port.WriteLine("CSP," + ligne.Num + ","+d+","+f);
+                if (port.ReadLine().Contains("ERR"))
+                {
+                    MessageBox.Show("Erreur ligne "+ligne.Num, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            port.WriteLine("EPG");
+            port.ReadLine();
+            port.Close();
+            lireBandes();
+            MessageBox.Show("Données envoyées", "Envoyé", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
     public class Bande

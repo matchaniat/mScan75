@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mScan75"
         mc:Ignorable="d"
-        Title="Gestion des fréquences" Height="650" Width="700">
+        Title="Gestion des fréquences" Height="650" Width="700" ResizeMode="CanMinimize">
     <Grid>
         <DataGrid x:Name="grille" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="599" Width="576" AutoGenerateColumns="False" ItemsSource="{Binding test}">
             <DataGrid.Columns>
@@ -27,7 +27,7 @@
         <Button x:Name="ba8" Content="Banque 8" HorizontalAlignment="Left" Margin="591,185,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
         <Button x:Name="ba9" Content="Banque 9" HorizontalAlignment="Left" Margin="591,210,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
         <Button x:Name="ba10" Content="Banque 10" HorizontalAlignment="Left" Margin="591,235,0,0" VerticalAlignment="Top" Width="91" Click="changerBanque"/>
-        <Button x:Name="button" Margin="591,313,10,0" VerticalAlignment="Top" Width="91" Height="54" Click="envoyerFrequences">
+        <Button x:Name="button" Margin="591,313,0,0" VerticalAlignment="Top" Height="54" Click="envoyerFrequences" HorizontalAlignment="Left" Width="91">
             <TextBlock TextWrapping="Wrap" >Envoyer vers le scanner</TextBlock>
         </Button>
     </Grid>
