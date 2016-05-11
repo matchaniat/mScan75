@@ -30,5 +30,8 @@
         <Button x:Name="button" Margin="591,313,0,0" VerticalAlignment="Top" Height="54" Click="envoyerFrequences" HorizontalAlignment="Left" Width="91">
             <TextBlock TextWrapping="Wrap" >Envoyer vers le scanner</TextBlock>
         </Button>
+        <Button x:Name="button1" HorizontalAlignment="Left" Margin="591,422,0,0" VerticalAlignment="Top" Width="91" Height="58" Click="enregistrerFichier">
+            <TextBlock TextWrapping="Wrap" >Enregistrer dans un fichier</TextBlock>
+        </Button>
     </Grid>
 </Window>

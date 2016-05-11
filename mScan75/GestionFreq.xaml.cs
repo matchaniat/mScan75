@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.IO.Ports;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 
 namespace mScan75
 {
@@ -127,6 +128,44 @@ namespace mScan75
             }
             MessageBox.Show("Données envoyées", "Envoyé", MessageBoxButton.OK, MessageBoxImage.Information);
             lireFrequences(Int32.Parse(test.First().Num),Int32.Parse(test.Last().Num));
+        }
+
+        private void enregistrerFichier(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog opf = new Microsoft.Win32.SaveFileDialog();
+            opf.DefaultExt = "csv";
+            opf.Filter = "Fichier CSV (*.csv)|*.csv";
+            if (opf.ShowDialog(this)==true)
+            {
+                /*Gestion des erreurs*/
+                try
+                {
+                    /*Création du stream d'ecriture de ton fichier avec en 1er paramètre le lien de ton fichier(openFileDialog1.FileName retourne le lien du fichier que tu as séléctionné)*/
+                    StreamWriter fichier = new StreamWriter(opf.FileName,false,Encoding.UTF8);
+                    fichier.WriteLine("Numéro;Fréquence;Commentaire");
+                    port.Open();
+                    port.WriteLine("PRG");
+                    port.ReadLine();
+
+                    
+                    for (int i=1;i<=300;i++)
+                    {
+                        port.WriteLine("CIN," + i.ToString());
+                        String[] donn = port.ReadLine().Split(',');
+                        if (Int32.Parse(donn[3])!=0)
+                            fichier.WriteLine(donn[1] + ";" + ((Double.Parse(donn[3]) / 10000.0).ToString()));
+                    }
+                    port.WriteLine("EPG");
+                    port.ReadLine();
+                    port.Close();
+                    fichier.Close();
+                    MessageBox.Show("Fichier enregistré !");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur: Impossible de d'écrire le fichier.");
+                }
+            }
         }
     }
     public class Memoire
