@@ -80,7 +80,7 @@
                 </GroupBox>
                 <Button x:Name="bscan" Content="Gérer frequences enregistrées Scan" HorizontalAlignment="Left" Margin="332,30,0,0" VerticalAlignment="Top" Width="240" Height="25" Click="gererFrequences"/>
                 <Button x:Name="brech" Content="Gérer bandes Recherche" HorizontalAlignment="Left" Margin="332,60,0,0" VerticalAlignment="Top" Width="240" Height="25" Click="gererBandes"/>
-                <Label Content="mScan 1.0.1.0" HorizontalAlignment="Left" Margin="332,90,0,0" VerticalAlignment="Top" Width="240"/>
+                <Label Content="mScan 1.0.2.0" HorizontalAlignment="Left" Margin="332,90,0,0" VerticalAlignment="Top" Width="240"/>
                 <Label Content="Mathieu Chaniat - Tous droits réservés" HorizontalAlignment="Left" Margin="332,115,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
